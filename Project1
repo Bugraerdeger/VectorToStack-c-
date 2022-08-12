@@ -1,0 +1,67 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+template <typename T>
+ class miniStack {
+public:
+	miniStack() {
+		vector<T> v;
+	};
+
+	void push(const T& item) {
+		stackVector.push_back(item);
+	};
+
+	void pop() {
+		stackVector.pop_back();
+	};
+
+	T& top() {
+		return stackVector.back();
+
+	};
+
+	const T& top() const {
+		return stackVector.back();
+
+	};
+
+	bool empty() const {
+		return stackVector.empty();
+
+	};
+
+	int size() const {
+		return stackVector.size();
+
+	};
+
+private:
+	vector<T> stackVector;
+};
+
+
+
+
+int main() {
+	string firstname = "John", lastname = "Doe", fullname;
+	miniStack<string> stk;
+
+	stk.push(firstname);
+	stk.push(lastname);
+
+	fullname = stk.top();
+
+	stk.pop();
+
+	stk.top() = "Jack";
+	fullname += "," + stk.top();
+	stk.pop();
+
+
+	for (int i = 0; i < fullname.length(); i++) {
+		cout << fullname[i];
+	}
+
+}
